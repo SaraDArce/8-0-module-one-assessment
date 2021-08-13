@@ -162,17 +162,25 @@ function filterByGenre(movies, genre) {
   if (!movies.length) {
     return [];
   }
-  let moviesByGenre = [];
-  let movieGenreStr = "";
-  let movieGenre = genre;
-  for (let i = 0; i < movies.length; i++) {
-    if (movies[i].genre === genre) {
-      moviesByGenre.push(movies[i].genre);
+  let moviesWithGenre = [];
+
+  for (let movie of movies) {
+    if (genre === movies.genre) {
+      moviesWithGenre.push(movie.genre);
     }
-    return [];
   }
-  return moviesByGenre, movieGenreStr;
+  return moviesWithGenre;
 }
+
+// let movieGenreStr = "";
+//   let movieGenre = genre;
+//   for (let i = 0; i < movies.length; i++) {
+//     if (movies[i].genre === genre) {
+//       moviesByGenre.push(movies[i].genre);
+//     }
+//     return [];
+//   }
+//   return moviesByGenre, movieGenreStr;
 
 //Don't think it's lost on me how ridiculous and "ugly" the below code is, Greg. #iTried
 
@@ -229,7 +237,7 @@ function filterByGenre(movies, genre) {
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {}
 
 /**
  * getBiggestBoxOfficeMovie()
