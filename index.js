@@ -28,7 +28,13 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(movies) {
+  let moviesArr = [];
+  for (let i = 0; i < movies.length; i++) {
+    moviesArr.push(movies[i].title);
+  }
+  return moviesArr;
+}
 
 /**
  * getHighestMetascore()
@@ -41,7 +47,19 @@ function getAllMovieTitles() {}
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function getHighestMetascore(movies) {
+  if (!movies.length) {
+    return 0;
+  }
+
+  let highestMeta = Number(movies[0].metascore);
+  for (let i = 1; i < movies.length; i++) {
+    if (Number(movies[i].metascore) > highestMeta) {
+      highestMeta = Number(movies[i].metascore);
+    }
+  }
+  return highestMeta;
+}
 
 /**
  * getAverageIMDBRating()
@@ -54,7 +72,17 @@ function getHighestMetascore() {}
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(movies) {
+  if (!movies.length) {
+    return 0;
+  }
+  let avgIMBD = 0;
+
+  for (let i = 0; i < movies.length; i++) {
+    avgIMBD += Number(movies[i].imdbRating);
+  }
+  return avgIMBD / movies.length;
+}
 
 /**
  * countByRating()
@@ -67,7 +95,21 @@ function getAverageIMDBRating() {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+  if (!movies.length) {
+    return {};
+  }
+  let ratedMovieCount = {};
+
+  for (let i = 0; i < movies.length; i++) {
+    if (!ratedMovieCount[movies[i].rated]) {
+      ratedMovieCount[movies[i].rated] = 1;
+    } else {
+      ratedMovieCount[movies[i].rated] += 1;
+    }
+  }
+  return ratedMovieCount;
+}
 
 /**
  * findById()
@@ -83,7 +125,18 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+  if (!movies.length) {
+    return null;
+  }
+
+  for (let movie of movies) {
+    if (movie.imdbID === id) {
+      return movie;
+    }
+  }
+  return null;
+}
 
 /**
  * filterByGenre()
@@ -105,7 +158,7 @@ function findById() {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
