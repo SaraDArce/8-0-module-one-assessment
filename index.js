@@ -172,49 +172,6 @@ function filterByGenre(movies, genre) {
   return moviesWithGenre;
 }
 
-// let movieGenreStr = "";
-//   let movieGenre = genre;
-//   for (let i = 0; i < movies.length; i++) {
-//     if (movies[i].genre === genre) {
-//       moviesByGenre.push(movies[i].genre);
-//     }
-//     return [];
-//   }
-//   return moviesByGenre, movieGenreStr;
-
-//Don't think it's lost on me how ridiculous and "ugly" the below code is, Greg. #iTried
-
-// let movieGenre1 = "Horror";
-// let movieGenre2 = "Comedy";
-// let movieGenre3 = "Fantasy";
-// let movieGenre4 = "Animation";
-// let movieGenre5 = "Family";
-// let movieGenre6 = "Adventure";
-
-// let movieGenreArr1 = [];
-// let movieGenreArr2 = [];
-// let movieGenreArr3 = [];
-// let movieGenreArr4 = [];
-// let movieGenreArr5 = [];
-// let movieGenreArr6 = [];
-
-// for (let i = 0; i < movies.length; i++) {
-//   if (movies[i].genre === genre) {
-//     movieGenreArr1.push(movies[i].genre["Horror"]);
-//   } else if (movies[i].genre === genre) {
-//     movieGenreArr2.push(movies[i].genre["Comedy"]);
-//   } else if (movies[i].genre === genre) {
-//     movieGenreArr3.push(movies[i].genre["Fantasy"]);
-//   } else if (movies[i].genre === genre) {
-//     movieGenreArr4.push(movies[i].genre["Animation"]);
-//   } else if (movies[i].genre === genre) {
-//     movieGenreArr5.push(movies[i].genre["Family"]);
-//   } else if (movies[i].genre === genre) {
-//     movieGenreArr6.push(movies[i].genre["Adventure"]);
-//   } else [];
-// }
-// return filterByGenre(movies, genre);
-
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
  * -----------------------------
@@ -250,7 +207,22 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+  if (!movies.length) {
+    return null;
+  }
+
+  let biggestMovie = Number(movies[0].boxOffice);
+  let biggestMovieTitle = "";
+
+  for (let i = 0; i < movies.length; i++) {
+    if (Number(movies[1].boxOffice) > biggestMovie) {
+      biggestMovie = Number(movies[i].boxOffice);
+      biggestMovieTitle = movies[i].title;
+    }
+  }
+  return biggestMovieTitle;
+}
 
 // Do not change anything below this line.
 module.exports = {
